@@ -175,6 +175,9 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector, 
 	 * @param attributes the {@link #getAttributes(AnnotationMetadata) annotation
 	 * attributes}
 	 * @return a list of candidate configurations
+	 *
+	 * 会从类加载器中查找所有的META-INF/spring.factories（调整了位置），
+	 * 并加载其中实现了@EnableAutoConfiguration的类
 	 */
 	protected List<String> getCandidateConfigurations(AnnotationMetadata metadata, AnnotationAttributes attributes) {
 		List<String> configurations = ImportCandidates.load(AutoConfiguration.class, getBeanClassLoader())
